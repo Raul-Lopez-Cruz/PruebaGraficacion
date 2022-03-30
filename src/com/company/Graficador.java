@@ -94,6 +94,27 @@ public class Graficador {
         return listaPuntos;
     }
 
+    /*
+    * */
+    public ArrayList<Punto> dibujaRectangulo(Punto infIzq, Punto supIzq, int ancho){
+        ArrayList<Punto> figura = new ArrayList<>();
+        Punto supDer, infDer;
+        //Línea Izquierda
+        figura.addAll(pintarLinea(infIzq,supIzq));
+        //Línea Superior
+        supDer = supIzq.clonar();
+        supDer.setX(supDer.getX()+ancho);
+        figura.addAll(pintarLinea(supIzq,supDer));
+        //Linea Inferior
+        infDer = infIzq.clonar();
+        infDer.setX(infDer.getX()+ancho);
+        figura.addAll(pintarLinea(infIzq,infDer));
+        //Linea Derecha
+        figura.addAll(pintarLinea(supDer,infDer));
+
+        return figura;
+    }
+
     public ArrayList<Punto> pintarCirculo(Punto centro, int radio){
         int p,x,y;
         x=0;
