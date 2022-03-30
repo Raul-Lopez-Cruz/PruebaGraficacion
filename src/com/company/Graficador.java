@@ -107,6 +107,12 @@ public class Graficador {
         return figura;
     }
 
+    public ArrayList<Punto> unir (ArrayList<Punto> arregloUno,ArrayList<Punto> arregloDos){
+        arregloDos.removeAll(arregloUno);
+        arregloUno.addAll(arregloDos);
+        return arregloUno;
+    }
+
 
     /*
     * */
@@ -128,6 +134,15 @@ public class Graficador {
         return figura;
     }
 
+    public ArrayList<Punto> pintaCirculo(Punto centro, int radio){
+        ArrayList<Punto> salida = new ArrayList<>();
+
+        while (radio>0){
+            salida.addAll(dibujaCirculo(centro,radio));
+            radio--;
+        }
+        return salida;
+    }
 
     public ArrayList<Punto> dibujaCirculo(Punto centro, int radio){
         int p,x,y;

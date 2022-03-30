@@ -4,6 +4,9 @@ package com.company;
 public class Punto{
     private int x,y;
 
+    public Punto() {
+    }
+
     @Override
     public String toString() {
         return "Punto{" +
@@ -16,6 +19,8 @@ public class Punto{
         this.x = x;
         this.y = y;
     }
+
+    public void setXY(int x, int y){this.x=x;this.y=y;}
 
     public int getX() {
         return x;
