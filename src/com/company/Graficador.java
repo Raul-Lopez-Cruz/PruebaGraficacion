@@ -108,6 +108,7 @@ public class Graficador {
     }
 
     public ArrayList<Punto> unir (ArrayList<Punto> arregloUno,ArrayList<Punto> arregloDos){
+        ArrayList<Punto> resultado=arregloUno;
         arregloDos.removeAll(arregloUno);
         arregloUno.addAll(arregloDos);
         return arregloUno;
