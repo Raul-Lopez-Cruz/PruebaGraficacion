@@ -6,7 +6,7 @@ import static java.lang.Math.abs;
 
 public class Graficador {
 
-    public ArrayList<Punto> pintarLinea(Punto i, Punto f){
+    public ArrayList<Punto> dibujaLinea(Punto i, Punto f){
         //Lista de puntos a regresar
         ArrayList <Punto> listaPuntos = new ArrayList<>();
 
@@ -94,56 +94,42 @@ public class Graficador {
         return listaPuntos;
     }
 
-    public ArrayList <Punto> repetir (Punto i, Punto f, int grosorxd){
-
-        ArrayList <Punto> listaPuntos_aux = new ArrayList<>();
-
-
-        int i_X = i.getX();
-        int f_X = f.getX();
-
-        int i_Y = i.getY();
-        int f_Y = f.getY();
-
-        int contador = 0;
-        while(contador<grosorxd) {
-
-            Punto p1 = new Punto(i_X, i_Y);
-            Punto p2 = new Punto(f_X, f_Y);
-            listaPuntos_aux.addAll(pintarLinea(p1, p2));
-            i_X++;
-            f_X++;
-
-            contador++;
+    /*
+     * */
+    public ArrayList <Punto> pintaRectangulo(Punto infIzq, Punto supIzq, int ancho){
+        ArrayList <Punto> figura = new ArrayList<>();
+        Punto aux1=infIzq.clonar(),aux2=supIzq.clonar();
+        for (int i=0;i<ancho;i++){
+            aux1.setX(infIzq.getX()+i);
+            aux2.setX(supIzq.getX()+i);
+            figura.addAll(dibujaLinea(aux1, aux2));
         }
-
-        return listaPuntos_aux;
+        return figura;
     }
 
 
     /*
     * */
     public ArrayList<Punto> dibujaRectangulo(Punto infIzq, Punto supIzq, int ancho){
-        ArrayList<Punto> figura = new ArrayList<>();
         Punto supDer, infDer;
         //Línea Izquierda
-        figura.addAll(pintarLinea(infIzq,supIzq));
+        ArrayList<Punto> figura = new ArrayList<>(dibujaLinea(infIzq, supIzq));
         //Línea Superior
         supDer = supIzq.clonar();
         supDer.setX(supDer.getX()+ancho);
-        figura.addAll(pintarLinea(supIzq,supDer));
+        figura.addAll(dibujaLinea(supIzq,supDer));
         //Linea Inferior
         infDer = infIzq.clonar();
         infDer.setX(infDer.getX()+ancho);
-        figura.addAll(pintarLinea(infIzq,infDer));
+        figura.addAll(dibujaLinea(infIzq,infDer));
         //Linea Derecha
-        figura.addAll(pintarLinea(supDer,infDer));
+        figura.addAll(dibujaLinea(supDer,infDer));
 
         return figura;
     }
 
 
-    public ArrayList<Punto> pintarCirculo(Punto centro, int radio){
+    public ArrayList<Punto> dibujaCirculo(Punto centro, int radio){
         int p,x,y;
         x=0;
         y=radio;
