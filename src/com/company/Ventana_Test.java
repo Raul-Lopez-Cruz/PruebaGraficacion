@@ -12,8 +12,8 @@ public class Ventana_Test extends JPanel {
         Graficador graficador = new Graficador();
         ArrayList<Punto> puntosFigura=new ArrayList<>();
         Punto uno = new Punto(10,1);
-        Punto dos = new Punto(10,20);
-        puntosFigura.addAll(graficador.dibujaRectangulo(uno,dos,20));
+        Punto dos = new Punto(10,100);
+        puntosFigura.addAll(graficador.dibujaRectangulo(uno,dos,100));
         g.setColor(Color.RED);
 
         for (Punto actual:puntosFigura) {

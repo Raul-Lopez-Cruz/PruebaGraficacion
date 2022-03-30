@@ -94,6 +94,33 @@ public class Graficador {
         return listaPuntos;
     }
 
+    public ArrayList <Punto> repetir (Punto i, Punto f, int grosorxd){
+
+        ArrayList <Punto> listaPuntos_aux = new ArrayList<>();
+
+
+        int i_X = i.getX();
+        int f_X = f.getX();
+
+        int i_Y = i.getY();
+        int f_Y = f.getY();
+
+        int contador = 0;
+        while(contador<grosorxd) {
+
+            Punto p1 = new Punto(i_X, i_Y);
+            Punto p2 = new Punto(f_X, f_Y);
+            listaPuntos_aux.addAll(pintarLinea(p1, p2));
+            i_X++;
+            f_X++;
+
+            contador++;
+        }
+
+        return listaPuntos_aux;
+    }
+
+
     /*
     * */
     public ArrayList<Punto> dibujaRectangulo(Punto infIzq, Punto supIzq, int ancho){
@@ -114,6 +141,7 @@ public class Graficador {
 
         return figura;
     }
+
 
     public ArrayList<Punto> pintarCirculo(Punto centro, int radio){
         int p,x,y;
