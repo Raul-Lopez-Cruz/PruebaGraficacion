@@ -90,8 +90,8 @@ public class Sprites {
         
         uno.setXY(coordX + 27,coordY + 51);
         dos.setXY(coordX + 27,coordY + 82);
-        dino.removeAll(graficador.pintaRectangulo(uno,dos,47)); //Elimina repetidos
-        dino.addAll(graficador.pintaRectangulo(uno,dos,47)); //rectangulo cuerpo
+        dino.removeAll(graficador.pintaRectangulo(uno,dos,44)); //Elimina repetidos
+        dino.addAll(graficador.pintaRectangulo(uno,dos,44)); //rectangulo cuerpo
         
         uno.setXY(coordX + 33,coordY + 83);
         dos.setXY(coordX + 33,coordY + 99);
@@ -108,8 +108,8 @@ public class Sprites {
         dino.removeAll(graficador.pintaRectangulo(uno,dos,9)); //Elimina repetidos
         dino.addAll(graficador.pintaRectangulo(uno,dos,9)); //lomoxd
         
-        uno.setXY(coordX + 74,coordY + 50);
-        dos.setXY(coordX + 74,coordY + 54);
+        uno.setXY(coordX + 71,coordY + 50);
+        dos.setXY(coordX + 71,coordY + 54);
         dino.removeAll(graficador.pintaRectangulo(uno,dos,9)); //Elimina repetidos
         dino.addAll(graficador.pintaRectangulo(uno,dos,9)); //brazo
         

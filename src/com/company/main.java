@@ -8,10 +8,10 @@ import static java.lang.Thread.sleep;
 
 public class main extends javax.swing.JFrame {
 
+    MotorAnimacion ma;
     PanelJuego pj = new PanelJuego();
     JPanel background = new JPanel();
-    int i = 0;
-    String dir = "arriba";
+
     public main() {
         initComponents();
         setLocationRelativeTo(null);
@@ -25,6 +25,8 @@ public class main extends javax.swing.JFrame {
         background.setSize(800, 600);
         background.setBounds(10, 10, 800, 600);
         add(background);
+
+        ma = new MotorAnimacion(pj);
 
         pack();
     }
@@ -69,22 +71,7 @@ public class main extends javax.swing.JFrame {
 //        }
 
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
-             if (i == 0) {
-                dir = "arriba";
-            }
-            if (i == 10) {
-                dir = "abajo";
-            }
-
-            if (dir.equals("arriba")) {
-                pj.saltar(-20);
-                i++;
-            }
-            if (dir.equals("abajo")) {
-                pj.saltar(20);
-                i--;
-            }
-            pj.repaint();
+             ma.iniciar();
         }
     }
 

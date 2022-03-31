@@ -13,7 +13,6 @@ public class PanelJuego extends JPanel {
     ArrayList<Punto> dino_2;
     ArrayList<Punto> figuraDino;
     ArrayList<Punto> figuraCactus_1;
-    ArrayList<Punto> figuraCactus_2;
 
 
     public void caminar(){
@@ -25,6 +24,7 @@ public class PanelJuego extends JPanel {
             dinoDisplayed=0;
         }
     }
+
     public void saltar(int altura){
         dino_1 = Sprites.trasladar(0,altura,dino_1);
         dino_2 = Sprites.trasladar(0,altura,dino_2);
