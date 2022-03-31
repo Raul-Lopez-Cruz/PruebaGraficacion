@@ -1,8 +1,24 @@
 package com.company;
 
+import java.util.Objects;
+
 //Clase Punto
 public class Punto{
     private int x,y;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getX(), this.getY());
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if ( !(obj instanceof Punto) ) {
+            return false;
+        }
+        return Objects.equals(((Punto)obj).getX(), this.getX())
+                && Objects.equals(((Punto)obj).getY(), this.getY());
+    }
 
     public Punto() {
     }
