@@ -1,6 +1,6 @@
-package com.company;
 
 import static java.lang.Thread.sleep;
+
 
 public class MotorAnimacion implements Runnable {
 
@@ -21,10 +21,19 @@ public class MotorAnimacion implements Runnable {
 
     @Override
     public void run() {
+        
+        int limiteCactus = 20;
+        
         while (sigueJugando) {
             //Desplazamiento del mapa (cactus)
-
-
+            Punto objeto  = pj.figuraCactus_1.get(0);
+            int primerPuntoX = objeto.getX();
+            pj.moverCactus(-10);
+            
+            if (primerPuntoX < limiteCactus) {
+                pj.figuraCactus_1 = Sprites.getCactus1(750,400);
+            }  
+            
             //Animación del Dinosaurio
             pj.caminar();
             //Salto del dinosaurio

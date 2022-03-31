@@ -1,5 +1,3 @@
-package com.company;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,9 +8,14 @@ public class PanelJuego extends JPanel {
     ArrayList<Punto> dino_1;
     Punto coordsDino;
     int alturaDino = 0;
+    int largoCactus = 0;
     ArrayList<Punto> dino_2;
     ArrayList<Punto> figuraDino;
     ArrayList<Punto> figuraCactus_1;
+    
+    public ArrayList<Punto> getFiguraCactus_1() {
+        return figuraCactus_1;
+    }
 
 
     public void caminar(){
@@ -30,6 +33,12 @@ public class PanelJuego extends JPanel {
         dino_2 = Sprites.trasladar(0,altura,dino_2);
         alturaDino += altura;
     }
+    
+    public void moverCactus(int largo){
+        figuraCactus_1 = Sprites.trasladar(largo,0,figuraCactus_1);
+        figuraCactus_1 = Sprites.trasladar(largo,0,figuraCactus_1);
+        largoCactus += largo;
+    }
 
 
     public void actualizaPosDino(int x,int y){
@@ -44,7 +53,7 @@ public class PanelJuego extends JPanel {
         dino_1=Sprites.getDino(50,400);
         dino_2=Sprites.getDino2(50,400);
         coordsDino = new Punto(50,400);
-        figuraCactus_1=Sprites.getCactus1(250,400);
+        figuraCactus_1=Sprites.getCactus1(750,400);
 
         figuraDino=dino_1;
 
