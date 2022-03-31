@@ -1,3 +1,5 @@
+package com.company;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -7,12 +9,13 @@ public class PanelJuego extends JPanel {
     int dinoDisplayed = 0;
     ArrayList<Punto> dino_1;
     Punto coordsDino;
+    int alturaSuelo;
     int alturaDino = 0;
     int largoCactus = 0;
     ArrayList<Punto> dino_2;
     ArrayList<Punto> figuraDino;
     ArrayList<Punto> figuraCactus_1;
-    
+
     public ArrayList<Punto> getFiguraCactus_1() {
         return figuraCactus_1;
     }
@@ -33,7 +36,7 @@ public class PanelJuego extends JPanel {
         dino_2 = Sprites.trasladar(0,altura,dino_2);
         alturaDino += altura;
     }
-    
+
     public void moverCactus(int largo){
         figuraCactus_1 = Sprites.trasladar(largo,0,figuraCactus_1);
         figuraCactus_1 = Sprites.trasladar(largo,0,figuraCactus_1);
@@ -50,13 +53,13 @@ public class PanelJuego extends JPanel {
     }
 
     public PanelJuego(){
-        dino_1=Sprites.getDino(50,400);
-        dino_2=Sprites.getDino2(50,400);
-        coordsDino = new Punto(50,400);
-        figuraCactus_1=Sprites.getCactus1(750,400);
+        alturaSuelo = 400;
+        //Inicializar las figuras (todas en Y=400)
+        dino_1=Sprites.getDino(50,alturaSuelo);
+        dino_2=Sprites.getDino2(50,alturaSuelo);
+        figuraCactus_1=Sprites.getCactus1(750,alturaSuelo);
 
         figuraDino=dino_1;
-
     }
 
     @Override
@@ -69,6 +72,10 @@ public class PanelJuego extends JPanel {
         for (Punto actual:figuraCactus_1) {
             g.fillRect(actual.getX(),actual.getY(),1, 1);
         }
+    }
+
+    public int getAlturaSuelo() {
+        return alturaSuelo;
     }
 
     public static void main(String[] args) {
