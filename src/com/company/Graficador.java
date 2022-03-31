@@ -107,14 +107,6 @@ public class Graficador {
         return figura;
     }
 
-    public ArrayList<Punto> unir (ArrayList<Punto> arregloUno,ArrayList<Punto> arregloDos){
-        ArrayList<Punto> resultado=arregloUno;
-        arregloDos.removeAll(arregloUno);
-        arregloUno.addAll(arregloDos);
-        return arregloUno;
-    }
-
-
     /*
     * */
     public ArrayList<Punto> dibujaRectangulo(Punto infIzq, Punto supIzq, int ancho){
@@ -195,6 +187,14 @@ public class Graficador {
             double x = actual.getX();
             double y = actual.getY();
             //
+        }
+        return arreglo;
+    }
+
+    public ArrayList<Punto> trasladar(int coordX, int coordY, ArrayList<Punto> arreglo){
+        for (Punto pixel:arreglo) {
+            pixel.setX(pixel.getX()+coordX);
+            pixel.setY(pixel.getY()+coordY);
         }
         return arreglo;
     }
