@@ -27,6 +27,7 @@ public class main extends javax.swing.JFrame {
         add(background);
 
         ma = new MotorAnimacion(pj);
+        ma.iniciar();
 
         pack();
     }
@@ -71,7 +72,7 @@ public class main extends javax.swing.JFrame {
 //        }
 
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
-             ma.iniciar();
+             //SALTAR
         }
     }
 
