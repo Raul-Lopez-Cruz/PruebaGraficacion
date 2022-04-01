@@ -18,6 +18,11 @@ public class Sprites {
         return graficador.rotarFigura(xc,yc,angulo,arreglo);
     }
 
+    static ArrayList<Punto> getSuelo(){
+        Punto a,b;
+        return graficador.dibujaLinea(a=new Punto(0,500),b=new Punto(800,500));
+    }
+
     static ArrayList<Punto> getCactus1(int coordX,int coordY){
         ArrayList<Punto> cactus;
         Punto dos = new Punto();

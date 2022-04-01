@@ -10,6 +10,7 @@ public class MotorAnimacion implements Runnable {
     PanelJuego pj;
     int i;
     int j;
+    int puntos =0;
     String dir = "arriba";
     String status;
     boolean inmune = false;
@@ -96,13 +97,14 @@ public class MotorAnimacion implements Runnable {
             inmune = alturaDino > 50;
             int hitboxD = 125;
             int hitboxI = 50;
-            if (cactusPosX<=hitboxD && cactusPosX>=hitboxI+20 && !inmune){
+            if (cactusPosX<=hitboxD && cactusPosX>=hitboxI && !inmune){
                 sigueJugando=false;
             }
 
 
             /*---------- Actualizar graphics / sleep ----------*/
             pj.repaint();
+            puntos++;
             try {
                 sleep(50);
             } catch (InterruptedException e) {
@@ -119,6 +121,6 @@ public class MotorAnimacion implements Runnable {
         }
         pj.muerteDino2();
         pj.repaint();
-        JOptionPane.showMessageDialog(null,"PERDISTE");
+        JOptionPane.showMessageDialog(null,"PERDISTE\nPuntos: "+puntos/10);
     }
 }

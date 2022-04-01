@@ -7,21 +7,22 @@ import java.util.ArrayList;
 public class PanelJuego extends JPanel {
 
     int dinoDisplayed = 0;
-    ArrayList<Punto> dino_1;
-    Punto coordsDino;
     int alturaSuelo;
     int alturaDino = 0;
     int cactusX = 0;
-    Punto coordsCactus;
+    ArrayList<Punto> dino_1;
     ArrayList<Punto> dino_2;
     ArrayList<Punto> figuraDino;
     ArrayList<Punto> figuraCactus_1;
+    ArrayList<Punto> suelo;
+
 
     public PanelJuego(){
         alturaSuelo = 400;
         //Inicializar las figuras (todas en Y=400)
         dino_1=Sprites.getDino(50,alturaSuelo);
         dino_2=Sprites.getDino2(50,alturaSuelo);
+        suelo=Sprites.getSuelo();
         spawnCactus();
 
         figuraDino=dino_1;
@@ -75,6 +76,9 @@ public class PanelJuego extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
 
+        for (Punto actual:suelo) {
+            g.fillRect(actual.getX(),actual.getY(),1, 1);
+        }
 
         for (Punto actual:figuraDino) {
             g.fillRect(actual.getX(),actual.getY(),1, 1);
