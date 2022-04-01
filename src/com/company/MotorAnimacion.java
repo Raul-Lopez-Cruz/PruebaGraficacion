@@ -1,5 +1,7 @@
 package com.company;
 
+import javax.swing.*;
+
 import static java.lang.Thread.sleep;
 
 
@@ -7,6 +9,7 @@ public class MotorAnimacion implements Runnable {
 
     PanelJuego pj;
     int i;
+    int j;
     String dir = "arriba";
     String status;
     boolean inmune = false;
@@ -14,11 +17,12 @@ public class MotorAnimacion implements Runnable {
     public final String CAMINANDO = "Caminando";
     public final String SALTANDO = "Saltando";
     int alturaDino;
+    int cactusPosX;
 
     MotorAnimacion(PanelJuego pj) {
         this.pj = pj;
         sigueJugando = true;
-        alturaDino = pj.getAlturaSuelo();
+        alturaDino = 0;
         setStatus(CAMINANDO);
     }
 
@@ -35,6 +39,7 @@ public class MotorAnimacion implements Runnable {
         if (status.equals(CAMINANDO)) {
             //Comienza el salto
             dir="arriba";
+            j=2;
             i=0;
             setStatus(SALTANDO);
             return true;
@@ -47,16 +52,13 @@ public class MotorAnimacion implements Runnable {
     @Override
     public void run() {
 
-        int limiteCactus = 20;
-
         while (sigueJugando) {
             //Desplazamiento del mapa (cactus)
-            Punto objeto  = pj.figuraCactus_1.get(0);
-            int primerPuntoX = objeto.getX();
-            pj.moverCactus(-10);
+            cactusPosX = pj.getCactusX();
+            pj.moverCactus(-15);
 
-            if (primerPuntoX < limiteCactus) {
-                pj.figuraCactus_1 = Sprites.getCactus1(750,400);
+            if (cactusPosX < -50) {
+                pj.spawnCactus();
             }
 
             //Animación del Dinosaurio
@@ -66,19 +68,23 @@ public class MotorAnimacion implements Runnable {
             /*---------- Salto del dinosaurio ----------*/
             if (status.equals(SALTANDO)) {
                 //Fases del salto: hacia arriba y hacia abajo
-                if (i == 5) {
+                if (i == 6) {
                     dir = "abajo";
                 }
                 //Desplazamiento de cada frame del salto
                 if (dir.equals("arriba")) {
                     pj.saltar(-25);
-                    alturaDino-=25;
+                    alturaDino+=25;
                     i++;
                 }
                 if (dir.equals("abajo")) {
-                    pj.saltar(25);
-                    alturaDino+=25;
-                    i--;
+                    if (j>0)
+                        j--;
+                    else{
+                        pj.saltar(25);
+                        alturaDino-=25;
+                        i--;
+                    }
                     //Condición para terminar el salto
                     if (i == 0) {
                         setStatus(CAMINANDO);
@@ -87,13 +93,32 @@ public class MotorAnimacion implements Runnable {
             }
             /*---------- Verificar colisión ----------*/
 
+            inmune = alturaDino > 50;
+            int hitboxD = 125;
+            int hitboxI = 50;
+            if (cactusPosX<=hitboxD && cactusPosX>=hitboxI+20 && !inmune){
+                sigueJugando=false;
+            }
+
+
             /*---------- Actualizar graphics / sleep ----------*/
             pj.repaint();
             try {
-                sleep(100);
+                sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        /*---------- Animación de muerte ----------*/
+        pj.muerteDino1();
+        pj.repaint();
+        try {
+            sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        pj.muerteDino2();
+        pj.repaint();
+        JOptionPane.showMessageDialog(null,"PERDISTE");
     }
 }

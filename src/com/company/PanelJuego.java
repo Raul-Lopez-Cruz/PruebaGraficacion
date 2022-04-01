@@ -11,15 +11,26 @@ public class PanelJuego extends JPanel {
     Punto coordsDino;
     int alturaSuelo;
     int alturaDino = 0;
-    int largoCactus = 0;
+    int cactusX = 0;
+    Punto coordsCactus;
     ArrayList<Punto> dino_2;
     ArrayList<Punto> figuraDino;
     ArrayList<Punto> figuraCactus_1;
 
+    public PanelJuego(){
+        alturaSuelo = 400;
+        //Inicializar las figuras (todas en Y=400)
+        dino_1=Sprites.getDino(50,alturaSuelo);
+        dino_2=Sprites.getDino2(50,alturaSuelo);
+        spawnCactus();
+
+        figuraDino=dino_1;
+    }
+
+
     public ArrayList<Punto> getFiguraCactus_1() {
         return figuraCactus_1;
     }
-
 
     public void caminar(){
         if (dinoDisplayed==0){
@@ -37,38 +48,38 @@ public class PanelJuego extends JPanel {
         alturaDino += altura;
     }
 
-    public void moverCactus(int largo){
-        figuraCactus_1 = Sprites.trasladar(largo,0,figuraCactus_1);
-        figuraCactus_1 = Sprites.trasladar(largo,0,figuraCactus_1);
-        largoCactus += largo;
+    public void moverCactus(int distancia){
+        figuraCactus_1 = Sprites.trasladar(distancia,0,figuraCactus_1);
+        cactusX += distancia;
     }
 
-
-    public void actualizaPosDino(int x,int y){
-        dino_1 = Sprites.trasladar(x,y,dino_1);
-        dino_2 = Sprites.trasladar(x,y,dino_2);
-        int cx=coordsDino.getX();
-        int cy=coordsDino.getY();
-        coordsDino.setXY(cx+x,cy+y);
+    public void spawnCactus(){
+        figuraCactus_1 = Sprites.getCactus1(750,alturaSuelo);
+        cactusX = 750;
     }
 
-    public PanelJuego(){
-        alturaSuelo = 400;
-        //Inicializar las figuras (todas en Y=400)
-        dino_1=Sprites.getDino(50,alturaSuelo);
-        dino_2=Sprites.getDino2(50,alturaSuelo);
-        figuraCactus_1=Sprites.getCactus1(750,alturaSuelo);
+    public int getCactusX(){
+        return cactusX;
+    }
 
-        figuraDino=dino_1;
+    public void muerteDino1(){
+        figuraDino=Sprites.trasladar(-50,0,
+        Sprites.rotarFigura(90,400,-90,dino_1));
+    }
+    public void muerteDino2(){
+        figuraDino=Sprites.trasladar(50,50,
+                Sprites.escalar(-.5,-.5,50,400,dino_2));
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
 
+
         for (Punto actual:figuraDino) {
             g.fillRect(actual.getX(),actual.getY(),1, 1);
         }
+
         for (Punto actual:figuraCactus_1) {
             g.fillRect(actual.getX(),actual.getY(),1, 1);
         }
@@ -80,9 +91,9 @@ public class PanelJuego extends JPanel {
 
     public static void main(String[] args) {
         JFrame ventana = new JFrame();
-        PanelJuego lienzo = new PanelJuego();
+        PanelJuego panelJuego = new PanelJuego();
         ventana.setSize(800,600);
-        ventana.setContentPane(lienzo);
+        ventana.setContentPane(panelJuego);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setVisible(true);
     }

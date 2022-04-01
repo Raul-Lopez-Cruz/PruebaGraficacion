@@ -10,6 +10,14 @@ public class Sprites {
         return graficador.trasladar(coordX,coordY,arreglo);
     }
 
+    static ArrayList<Punto> escalar(double a, double b, int c, int d, ArrayList<Punto> figura){
+        return graficador.escalarFigura(a,b,c,d,figura);
+    }
+
+    static ArrayList<Punto> rotarFigura(double xc, double yc, double angulo, ArrayList<Punto> arreglo){
+        return graficador.rotarFigura(xc,yc,angulo,arreglo);
+    }
+
     static ArrayList<Punto> getCactus1(int coordX,int coordY){
         ArrayList<Punto> cactus;
         Punto dos = new Punto();
