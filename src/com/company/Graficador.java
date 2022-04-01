@@ -193,8 +193,6 @@ public class Graficador {
 
             double xn= ((xc+(x-xc)*(Math.cos(angulo*Math.PI/180)))-((y-yc)*Math.sin(angulo*Math.PI/180)));
             double yn= ((yc+(x-xc)*(Math.sin(angulo*Math.PI/180)))+((y-yc)*Math.cos(angulo*Math.PI/180)));
-            System.out.println(xn);
-            System.out.println(yn);
             nuevo.setXY((int) xn, (int) yn);
             resultado.add(nuevo.clonar());
         }
