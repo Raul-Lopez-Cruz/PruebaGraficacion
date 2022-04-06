@@ -129,7 +129,6 @@ public class Graficador {
 
     public ArrayList<Punto> pintaCirculo(Punto centro, int radio){
         ArrayList<Punto> salida = new ArrayList<>();
-
         while (radio>0){
             salida.addAll(dibujaCirculo(centro,radio));
             radio--;
@@ -187,10 +186,8 @@ public class Graficador {
         Punto nuevo=new Punto();
         while (!arreglo.isEmpty()){
             Punto actual = arreglo.remove(0);
-
             double x = actual.getX();
             double y = actual.getY();
-
             double xn= ((xc+(x-xc)*(Math.cos(angulo*Math.PI/180)))-((y-yc)*Math.sin(angulo*Math.PI/180)));
             double yn= ((yc+(x-xc)*(Math.sin(angulo*Math.PI/180)))+((y-yc)*Math.cos(angulo*Math.PI/180)));
             nuevo.setXY((int) xn, (int) yn);
