@@ -92,13 +92,4 @@ public class PanelJuego extends JPanel {
     public int getAlturaSuelo() {
         return alturaSuelo;
     }
-
-    public static void main(String[] args) {
-        JFrame ventana = new JFrame();
-        PanelJuego panelJuego = new PanelJuego();
-        ventana.setSize(800,600);
-        ventana.setContentPane(panelJuego);
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setVisible(true);
-    }
 }

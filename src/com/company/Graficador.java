@@ -203,8 +203,4 @@ public class Graficador {
         }
         return arreglo;
     }
-
-    public static void main(String[] args) {
-
-    }
 }
