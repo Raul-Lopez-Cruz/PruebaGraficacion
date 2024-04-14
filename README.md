@@ -22,11 +22,11 @@ Welcome to the Dino Game! Your goal is simple: guide your dino safely through th
 ## License
 This project is licensed under the GNU GPL 3.0 License. See the LICENSE.txt file for more information.
 
-### Authors
+## Authors
 - Jaanai [@codeandcoffe](https://github.com/codeandcoffe)
 - Raúl [@ralo-dev](https://github.com/ralo-dev)
 
-### Sources
+## Sources
 - [T-Rex Game](https://dino-chrome.com/)
 - [Bresenham's Line Algorithm](https://digitalbunker.dev/bresenhams-line-algorithm/)
 - [Bresenham’s Circle Drawing Algorithm](https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/)
